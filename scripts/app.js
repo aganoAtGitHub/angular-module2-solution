@@ -2,13 +2,13 @@
 'use strict';
 
 angular.module('ShoppingListCheckOff', [])
-.controller('ShoppingListController1', ShoppingListController1)
-.controller('ShoppingListController2', ShoppingListController2)
+.controller('ToBuyController', ToBuyController)
+.controller('AlreadyBoughtController', AlreadyBoughtController)
 .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
 // LIST #1 - controller
-ShoppingListController1.$inject = ['ShoppingListCheckOffService'];
-function ShoppingListController1(ShoppingListCheckOffService) {
+ToBuyController.$inject = ['ShoppingListCheckOffService'];
+function ToBuyController(ShoppingListCheckOffService) {
   var list1 = this;
   // Use service to create new shopping list
   list1.items = ShoppingListCheckOffService.getItems();
@@ -29,8 +29,8 @@ function ShoppingListController1(ShoppingListCheckOffService) {
 }
 
 // LIST #2 - controller
-ShoppingListController2.$inject = ['ShoppingListCheckOffService'];
-function ShoppingListController2(ShoppingListCheckOffService) {
+AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+function AlreadyBoughtController(ShoppingListCheckOffService) {
   var list2 = this;
 
   //get boutItems list from the ShoppingListCheckOffService
@@ -82,7 +82,7 @@ function ShoppingListCheckOffService() {
 
   // List of bought items
   var boughtItems = [];
-  
+
   service.addBoughtItem = function (itemName, quantity) {
     var boughtItem = {
       name: itemName,
